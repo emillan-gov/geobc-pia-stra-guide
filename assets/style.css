@@ -1,0 +1,20 @@
+:root { --maxw: 900px; }
+body { font-family: system-ui, sans-serif; line-height: 1.4; margin: 0; }
+main { max-width: var(--maxw); margin: 2rem auto; padding: 0 1rem; }
+h1, h2, legend { margin: 1rem 0; }
+form label { display: grid; margin: .5rem 0; gap: .25rem; }
+input, textarea, select, button { padding: .5rem; font: inherit; }
+fieldset { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+.actions { margin-top: 1rem; display: flex; gap: .5rem; }
+
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #ccc; padding: .5rem; text-align: left; }
+thead th { background: #f7f7f7; }
+
+/* Print styling for a clean PDF via Ctrl/Cmd+P */
+@media print {
+  body { margin: 0; }
+  #questionnaire, #export { display: none !important; }
+  #report { display: block !important; }
+  footer { margin-top: 2rem; }
+}
