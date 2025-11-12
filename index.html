@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Data Dictionary Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <main>
+    <h1>Data Dictionary Builder</h1>
+
+    <!-- Step 1: Questionnaire -->
+    <form id="questionnaire">
+      <fieldset>
+        <legend>Dataset basics</legend>
+        <label>Dataset Name
+          <input name="dataset_name" required />
+        </label>
+        <label>Owner / Steward
+          <input name="owner" />
+        </label>
+        <label>Purpose / Use Case
+          <textarea name="purpose" rows="3"></textarea>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Fields / Attributes</legend>
+        <div id="fields"></div>
+        <button type="button" id="addField">+ Add Field</button>
+      </fieldset>
+
+      <fieldset>
+        <legend>Storage & Access</legend>
+        <label>Storage Location (e.g., FGDB, PostGIS, S3)
+          <input name="storage_location" />
+        </label>
+        <label>Retention / Backup
+          <input name="retention" />
+        </label>
+        <label>Access Level (e.g., public, internal, restricted)
+          <input name="access_level" />
+        </label>
+      </fieldset>
+
+      <div class="actions">
+        <button type="submit">Build Data Dictionary</button>
+      </div>
+    </form>
+
+    <!-- Step 2: Export -->
+    <section id="export" hidden>
+      <button id="downloadJson">Download JSON</button>
+      <button id="printPdf">Save as PDF</button>
+    </section>
+
+    <!-- Hidden report template used for printing -->
+    <article id="report" hidden>
+      <h1 id="r_title"></h1>
+      <h2>Overview</h2>
+      <p><strong>Owner / Steward:</strong> <span id="r_owner"></span></p>
+      <p><strong>Purpose:</strong> <span id="r_purpose"></span></p>
+
+      <h2>Schema (Fields)</h2>
+      <table id="r_fields">
+        <thead>
+          <tr>
+            <th>Name</th><th>Type</th><th>Nullable</th><th>Description</th><th>Domain / Allowed Values</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <h2>Storage & Governance</h2>
+      <p><strong>Storage:</strong> <span id="r_storage"></span></p>
+      <p><strong>Retention:</strong> <span id="r_retention"></span></p>
+      <p><strong>Access Level:</strong> <span id="r_access"></span></p>
+
+      <footer>
+        <small>Generated on <span id="r_date"></span></small>
+      </footer>
+    </article>
+  </main>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
